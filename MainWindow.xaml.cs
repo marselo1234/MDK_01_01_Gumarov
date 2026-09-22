@@ -23,7 +23,7 @@ namespace WpfApp1
     public partial class MainWindow : Window
     {
         public Classes.PersonInfo Player = new Classes.PersonInfo("Student", 100, 10, 1, 0, 0, 5);
-
+        public List<Classes.PersonInfo> Enemys = new List<Classes.PersonInfo>();
         public MainWindow()
 
         {
@@ -37,6 +37,7 @@ namespace WpfApp1
             dispatcherTimer.Tick += AttackPlayer;
             dispatcherTimer.Interval = new System.TimeSpan(0, 0, 10);
         }
+        
         public void AttackPlayer(object sender, System.EventArgs e)
         {
 
