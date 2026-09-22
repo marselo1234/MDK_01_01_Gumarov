@@ -38,6 +38,7 @@ namespace WpfApp1
             dispatcherTimer.Tick += AttackPlayer;
             dispatcherTimer.Interval = new System.TimeSpan(0, 0, 10);
             SelectEnemy();
+            
         }
         public void SelectEnemy()
         {
@@ -55,6 +56,20 @@ namespace WpfApp1
         {
             Player.Health -= Convert.ToInt32(Enemy.Damage * 100f / (100f - Player.Armor));
             UserInfoPlayer();
+        }
+        public void AttackEnemy(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            Enemy.Health -= Convert.ToInt32(Player.Damage * 100f / (100f- Enemy.Armor));
+            if (Enemy.Health <= 0) 
+            {
+                Player.Glasses += Enemy.Glasses;
+                Player.Money += Enemy.Money;
+                UserInfoPlayer();
+                SelectEnemy();  
+            }
+            else {
+                emptyHealth.Content = "Жизенные показатели: " + Enemy.Health;
+                emptyArmor.Content = "Броня: " + Enemy.Armor;
         }
         public void UserInfoPlayer()
         {
