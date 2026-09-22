@@ -20,9 +20,27 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
+        public Classes.PersonInfo Player = new Classes.PersonInfo("Student", 100, 10, 1, 0, 0, 5);
         public MainWindow()
         {
             InitializeComponent();
+            UserInfoPlayer();
+        }
+        public void UserInfoPlayer()
+        {
+            if (Player.Glasses > 100 * Player.Level)
+            {
+                Player.Level++;
+                Player.Glasses = 0;
+                Player.Health += 100;
+                Player.Damage++;
+                Player.Armor++;
+            }
+            playerHealth.Content = "Жизенные показатели: " + Player.Health;
+            playerArmor.Content = "Броня: " + playerArmor;
+            playerLevel.Content = "Уровень: " + playerLevel;
+            playerGlasses.Content = "Опыт: " + playerGlasses;
+            playerMoney.Content = "Монеты: " + playerMoney;
         }
     }
 }
