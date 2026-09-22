@@ -32,7 +32,17 @@
                     VerticalAlignment="Bottom"
                     Margin="10,0,0,130"/>
                 <Label
+                    Content="Броня: 100"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Bottom"
+                    Margin="10,0,0,100"/>
+                <Label
                     Content="Уровень: 1"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Bottom"
+                    Margin="10,0,0,70"/>
+                <Label
+                    Content="Опыт: 0"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Bottom"
                     Margin="10,0,0,40"/>
@@ -66,7 +76,17 @@
                     VerticalAlignment="Bottom"
                     Margin="10,0,0,130"/>
                 <Label
+                    Content="Броня: 100"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Bottom"
+                    Margin="10,0,0,100"/>
+                <Label
                     Content="Уровень: 1"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Bottom"
+                    Margin="10,0,0,70"/>
+                <Label
+                    Content="Опыт: 0"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Bottom"
                     Margin="10,0,0,40"/>
