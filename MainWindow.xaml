@@ -73,7 +73,7 @@
                     Margin="10,10,10.2,185.4"
                     Source="Image/monstr.png"/>
                 <Label
-                    Content="Основные характеристики персонажа:"
+                    Content="Основные характеристики Монстра:"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Bottom"
                     FontWeight="Bold" 

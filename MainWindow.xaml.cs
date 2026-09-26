@@ -33,7 +33,7 @@ namespace WpfApp1
             InitializeComponent();
 
             UserInfoPlayer();
-            Enemys.Add(new Classes.PersonInfo("Название врага №1", 30, 10, 1, 15, 5, 0, 5, 20, "Image/monstr.png"));
+            Enemys.Add(new Classes.PersonInfo("Название врага №1", 30, 10, 1, 15, 5, 10, 5, 20, "Image/monstr.png"));
             Enemys.Add(new Classes.PersonInfo("Название врага №2", 20, 5, 1, 5, 2, 5, 5, 20, "Image/monser2.png"));
             Enemys.Add(new Classes.PersonInfo("Название врага №3", 25, 3, 1, 10, 10, 15, 5, 20, "Image/monster3.png"));
             dispatcherTimer.Tick += AttackPlayer;
@@ -69,8 +69,8 @@ namespace WpfApp1
                 MessageBox.Show("Ты умер");
                 SelectEnemy();
                 Player = new Classes.PersonInfo("Student", 100, 10, 1, 0, 0, 5, 5, 0, "Image/knight.png");
+                UserInfoPlayer();
             }
-            UserInfoPlayer();
         }
         public void AttackEnemy(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
