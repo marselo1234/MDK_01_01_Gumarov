@@ -90,24 +90,7 @@
                     HorizontalAlignment="Left"
                     VerticalAlignment="Bottom"
                     Margin="10,0,0,100"/>
-                <Label
-                    Content="Уровень: 1"
-                    x:Name="emptyLevel"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Bottom"
-                    Margin="10,0,0,70"/>
-                <Label
-                    x:Name="emptyGlasses"
-                    Content="Опыт: 0"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Bottom"
-                    Margin="10,0,0,40"/>
-                <Label
-                    x:Name="emptyMoney"
-                    Content="Монеты: 0"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Bottom"
-                    Margin="10,0,0,10"/>
+                
             </Grid>
         </Border>
     </Grid>

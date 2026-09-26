@@ -22,9 +22,10 @@ namespace WpfApp1
     
     public partial class MainWindow : Window
     {
-        public Classes.PersonInfo Player = new Classes.PersonInfo("Student", 100, 10, 1, 0, 0, 5);
+        private static readonly Random random = new Random();
+        public Classes.PersonInfo Player = new Classes.PersonInfo("Student", 100, 10, 1, 0, 0, 5, 5, 0, "Image/knight.png");
         public List<Classes.PersonInfo> Enemys = new List<Classes.PersonInfo>();
-        public Classes.PersonInfo Enemy = new Classes.PersonInfo("Enemy", 100, 10, 1, 0, 0, 5);
+        public Classes.PersonInfo Enemy;
         public MainWindow()
 
         {
@@ -32,11 +33,12 @@ namespace WpfApp1
             InitializeComponent();
 
             UserInfoPlayer();
-            Enemys.Add(new Classes.PersonInfo("Название врага №1", 100, 20, 1, 15, 5, 20));
-            Enemys.Add(new Classes.PersonInfo("Название врага №2", 20, 5, 1, 5, 2, 5));
-            Enemys.Add(new Classes.PersonInfo("Название врага №3", 50, 3, 1, 10, 10, 15));
+            Enemys.Add(new Classes.PersonInfo("Название врага №1", 30, 10, 1, 15, 5, 0, 5, 20, "Image/monstr.png"));
+            Enemys.Add(new Classes.PersonInfo("Название врага №2", 20, 5, 1, 5, 2, 5, 5, 20, "Image/monser2.png"));
+            Enemys.Add(new Classes.PersonInfo("Название врага №3", 25, 3, 1, 10, 10, 15, 5, 20, "Image/monster3.png"));
             dispatcherTimer.Tick += AttackPlayer;
-            dispatcherTimer.Interval = new System.TimeSpan(0, 0, 10);
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 10);
+            dispatcherTimer.Start();
             SelectEnemy();
             
         }
@@ -50,26 +52,47 @@ namespace WpfApp1
                 Enemys[Id].Level,
                 Enemys[Id].Glasses,
                 Enemys[Id].Money,
-                Enemys[Id].Damage);
+                Enemys[Id].Damage,
+                Enemys[Id].Pierce,
+                Enemys[Id].ContrAttack,
+                Enemys[Id].Image);
+            emptyImage.Source = new BitmapImage(new Uri(Enemy.Image, UriKind.Relative));
+            emptyHealth.Content = "Жизненные показатели: " + Enemy.Health;
+            emptyArmor.Content = "Броня: " + Enemy.Armor;
         }
         public void AttackPlayer(object sender, System.EventArgs e)
         {
             Player.Health -= Convert.ToInt32(Enemy.Damage * 100f / (100f - Player.Armor));
             UserInfoPlayer();
+            if (Player.Health <= 0)
+            {
+                MessageBox.Show("Ты умер");
+                SelectEnemy();
+                Player = new Classes.PersonInfo("Student", 100, 10, 1, 0, 0, 5, 5, 0, "Image/knight.png");
+            }
+            UserInfoPlayer();
         }
         public void AttackEnemy(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            Enemy.Health -= Convert.ToInt32(Player.Damage * 100f / (100f- Enemy.Armor));
-            if (Enemy.Health <= 0) 
+            if (random.Next(1, 101) > Player.Pierce) { Enemy.Health -= Convert.ToInt32(Player.Damage / 100f * (100f - Enemy.Armor)); }
+            else { Enemy.Health -= Convert.ToInt32(Player.Damage); }
+
+            if (Enemy.Health <= 0)
             {
                 Player.Glasses += Enemy.Glasses;
                 Player.Money += Enemy.Money;
+
                 UserInfoPlayer();
-                SelectEnemy();  
+
+                SelectEnemy();
             }
-            else {
-                emptyHealth.Content = "Жизенные показатели: " + Enemy.Health;
+            else
+            {
+                emptyHealth.Content = "Жизненные показатели: " + Enemy.Health;
                 emptyArmor.Content = "Броня: " + Enemy.Armor;
+
+                if (random.Next(1, 101) <= Enemy.ContrAttack) { AttackPlayer(this, EventArgs.Empty); }
+            }
         }
         public void UserInfoPlayer()
         {
@@ -83,10 +106,10 @@ namespace WpfApp1
                 Player.Armor++;
             }
             playerHealth.Content = "Жизенные показатели: " + Player.Health;
-            playerArmor.Content = "Броня: " + playerArmor;
-            playerLevel.Content = "Уровень: " + playerLevel;
-            playerGlasses.Content = "Опыт: " + playerGlasses;
-            playerMoney.Content = "Монеты: " + playerMoney;
+            playerArmor.Content = "Броня: " + Player.Armor;
+            playerLevel.Content = "Уровень: " + Player.Level;
+            playerGlasses.Content = "Опыт: " + Player.Glasses;
+            playerMoney.Content = "Монеты: " + Player.Money;
         }
     }
 }

@@ -22,7 +22,14 @@ namespace WpfApp1.Classes
 
         public float Damage { get; set; }
 
-        public PersonInfo(string Name, int Health, int Armor, int Level, int Glasses, int Money, float Damage)
+        public int Pierce { get; set; }
+
+        public int ContrAttack { get; set; }
+
+        public string Image {  get; set; }
+
+
+        public PersonInfo(string Name, int Health, int Armor, int Level, int Glasses, int Money, float Damage, int Pierce, int ContrAttack, string Image)
         {
             this.Name = Name;
             this.Health = Health;
@@ -31,6 +38,9 @@ namespace WpfApp1.Classes
             this.Glasses = Glasses;
             this.Money = Money;
             this.Damage = Damage;
+            this.Pierce = Pierce;
+            this.ContrAttack = ContrAttack;
+            this.Image = Image;
         }
     }
 
