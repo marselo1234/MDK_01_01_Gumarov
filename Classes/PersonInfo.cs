@@ -12,7 +12,7 @@ namespace WpfApp1.Classes
 
         public int Health { get; set; }
 
-        public int Armor {  get; set; }
+        public int Armor { get; set; }
 
         public int Level { get; set; }
 
@@ -26,7 +26,7 @@ namespace WpfApp1.Classes
 
         public int ContrAttack { get; set; }
 
-        public string Image {  get; set; }
+        public string Image { get; set; }
 
 
         public PersonInfo(string Name, int Health, int Armor, int Level, int Glasses, int Money, float Damage, int Pierce, int ContrAttack, string Image)
@@ -44,5 +44,5 @@ namespace WpfApp1.Classes
         }
     }
 
-    
+
 }

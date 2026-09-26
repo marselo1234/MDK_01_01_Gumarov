@@ -19,7 +19,7 @@ namespace WpfApp1
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
-    
+
     public partial class MainWindow : Window
     {
         private static readonly Random random = new Random();
@@ -40,7 +40,7 @@ namespace WpfApp1
             dispatcherTimer.Interval = new TimeSpan(0, 0, 10);
             dispatcherTimer.Start();
             SelectEnemy();
-            
+
         }
         public void SelectEnemy()
         {
